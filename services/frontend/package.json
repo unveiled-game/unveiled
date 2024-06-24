@@ -1,0 +1,14 @@
+{
+  "name": "@services/frontend",
+  "module": "src/index.ts",
+  "type": "module",
+  "dependencies": {
+    "react": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

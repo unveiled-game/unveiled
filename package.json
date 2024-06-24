@@ -1,0 +1,19 @@
+{
+  "name": "unveiled",
+  "version": "0.0.0",
+  "bugs": {
+    "url": "https://github.com/unveiled-game/unveiled"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unveiled-game/unveiled"
+  },
+  "homepage": "https://unveiled.fun",
+  "workspaces": [
+    "services/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "bun run --filter='@services/*' dev"
+  }
+}
