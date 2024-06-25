@@ -1,5 +1,33 @@
-{
-  "files.associations": {
-    "package.json": "jsonc"
-  }
+{ 
+  // ESLint:
+  "prettier.enable": false,
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // Vitest:
+  "vitest.include": [
+    "**/*.test.{js,mjs,cjs,ts,mts,cts}"
+  ],
+
+  // Tailwind:
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "tailwindCSS.classAttributes": [
+    "class.*",
+    "className.*",
+    "ngClass",
+    ".*Styles",
+    ".*styles",
+  ],
+  "tailwindCSS.experimental.classRegex": [
+    ["clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ],
+  "tailwindCSS.lint.cssConflict" : "ignore",
+
+  // JSON Schema
+  "json.schemas": [
+  ]
 }
