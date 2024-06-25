@@ -12,6 +12,8 @@
     "@hono/swagger-ui": "^0.3.0",
     "@hono/zod-openapi": "^0.14.5",
     "dayjs": "^1.11.11",
+    "zod": "^3.23.8",
+    "zod-openapi": "^2.19.0"
   },
   "devDependencies": {
     "@bluzzi/eslint-config": "^1.2.1",
