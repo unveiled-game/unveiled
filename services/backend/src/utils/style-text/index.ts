@@ -1,1 +1,1 @@
-export {styleText} from "./main";
+export { styleText, styleText as st } from "./main";
