@@ -6,7 +6,7 @@
   "scripts": {
     // Workaround - follow the progress of https://github.com/oven-sh/bun/issues/11190 
     "env-files": "bun --env-file=../../.env --env-file=.env",
-    "dev": "bun run env-files --watch src/server.ts",
+    "dev": "bun run env-files --watch src/server.ts"
   },
   "dependencies": {
     "@hono/swagger-ui": "^0.3.0",
