@@ -1,15 +1,4 @@
 # @services/backend
 
-To install dependencies:
-
-```bash
-bun install
-```
-
-To run:
-
-```bash
-bun run src/index.ts
-```
-
-This project was created using `bun init` in bun v1.1.16. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+> [!NOTE]
+> In `package.json`, script `env-files` is a workaround - follow the progress of https://github.com/oven-sh/bun/issues/11190 
