@@ -1,10 +1,12 @@
 {
   "name": "@services/backend",
-  "module": "src/index.ts",
+  "module": "src/server.ts",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "bun --watch src/index.ts"
+    // Workaround - follow the progress of https://github.com/oven-sh/bun/issues/11190 
+    "env-files": "bun --env-file=../../.env --env-file=.env",
+    "dev": "bun run env-files --watch src/server.ts",
   },
   "dependencies": {
     "@hono/swagger-ui": "^0.3.0",
