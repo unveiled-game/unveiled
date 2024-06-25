@@ -1,0 +1,1 @@
+export { winstonLogger } from "./main";
