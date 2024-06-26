@@ -14,8 +14,8 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "bun run --filter='@services/*' dev",
-    "dev:backend": "bun run --filter='@services/backend' dev",
-    "dev:frontend": "bun run --filter='@services/frontend' dev"
+    "dev": "bun run --filter='*' dev | tee /dev/null",
+    "dev:backend": "bun run --filter='@services/backend' dev | tee /dev/null",
+    "dev:frontend": "bun run --filter='@services/frontend' dev | tee /dev/null"
   }
 }
