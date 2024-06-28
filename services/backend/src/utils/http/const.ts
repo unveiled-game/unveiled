@@ -14,15 +14,8 @@ export const Methods = {
   PATCH: "PATCH"
 } as const;
 
-export type StatusCodes = ObjectValues<typeof StatusCodes>;
-export const StatusCodes = {
-
-  //--------------------------------
-  //
-  // INFORMATIONAL
-  //
-  //--------------------------------
-
+export type InformationalStatusCodes = ObjectValues<typeof InformationalStatusCodes>;
+export const InformationalStatusCodes = {
   /**
    * This interim response indicates that everything so far is OK and that the client should continue with the request or ignore it if it is already finished.
    * @doc https://tools.ietf.org/html/rfc7231#section-6.2.1
@@ -45,15 +38,11 @@ export const StatusCodes = {
    * This code indicates to the client that the server is likely to send a final response with the header fields included in the informational response.
    * @doc https://www.rfc-editor.org/rfc/rfc8297#page-3
    */
-  EARLY_HINTS: 103,
+  EARLY_HINTS: 103
+} as const;
 
-
-  //--------------------------------
-  //
-  // SUCCESSFUL
-  //
-  //--------------------------------
-
+export type SuccessfulStatusCode = ObjectValues<typeof SuccessfulStatusCode>;
+export const SuccessfulStatusCode = {
   /**
    * The request has succeeded. The meaning of a success varies depending on the HTTP method:
    * GET: The resource has been fetched and is transmitted in the message body.
@@ -104,64 +93,11 @@ export const StatusCodes = {
    * A Multi-Status response conveys information about multiple resources in situations where multiple status codes might be appropriate.
    * @doc https://tools.ietf.org/html/rfc2518#section-10.2
    */
-  MULTI_STATUS: 207,
+  MULTI_STATUS: 207
+} as const;
 
-
-  //--------------------------------
-  //
-  // REDIRECTION
-  //
-  //--------------------------------
-
-  /**
-   * The request has more than one possible responses. User-agent or user should choose one of them. There is no standardized way to choose one of the responses.
-   * @doc https://tools.ietf.org/html/rfc7231#section-6.4.1
-   */
-  MULTIPLE_CHOICES: 300,
-
-  /**
-   * This response code means that URI of requested resource has been changed. Probably, new URI would be given in the response.
-   * @doc https://tools.ietf.org/html/rfc7231#section-6.4.2
-   */
-  MOVED_PERMANENTLY: 301,
-
-  /**
-   * This response code means that URI of requested resource has been changed temporarily. New changes in the URI might be made in the future. Therefore, this same URI should be used by the client in future requests.
-   * @doc https://tools.ietf.org/html/rfc7231#section-6.4.3
-   */
-  MOVED_TEMPORARILY: 302,
-
-  /**
-   * Server sent this response to directing client to get requested resource to another URI with an GET request.
-   * @doc https://tools.ietf.org/html/rfc7231#section-6.4.4
-   */
-  SEE_OTHER: 303,
-
-  /**
-   * This is used for caching purposes. It is telling to client that response has not been modified. So, client can continue to use same cached version of response.
-   * @doc https://tools.ietf.org/html/rfc7232#section-4.1
-   */
-  NOT_MODIFIED: 304,
-
-  /**
-   * Server sent this response to directing client to get requested resource to another URI with same method that used prior request. This has the same semantic than the 302 Found HTTP response code, with the exception that the user agent must not change the HTTP method used: if a POST was used in the first request, a POST must be used in the second request.
-   * @doc https://tools.ietf.org/html/rfc7231#section-6.4.7
-   */
-  TEMPORARY_REDIRECT: 307,
-
-  /**
-   * This means that the resource is now permanently located at another URI, specified by the Location: HTTP Response header. This has the same semantics as the 301 Moved Permanently HTTP response code, with the exception that the user agent must not change the HTTP method used: if a POST was used in the first request, a POST must be used in the second request.
-   * @doc https://tools.ietf.org/html/rfc7538#section-3
-   */
-  PERMANENT_REDIRECT: 308,
-
-
-  //--------------------------------
-  //
-  // CLIENT ERROR
-  //
-  //--------------------------------
-
+export type ClientErrorStatusCodes = ObjectValues<typeof ClientErrorStatusCodes>;
+export const ClientErrorStatusCodes = {
   /**
    * This response means that server could not understand the request due to invalid syntax.
    * @doc https://tools.ietf.org/html/rfc7231#section-6.5.1
@@ -334,15 +270,11 @@ export const StatusCodes = {
    * The user-agent requested a resource that cannot legally be provided, such as a web page censored by a government.
    * @doc https://tools.ietf.org/html/rfc7725
    */
-  UNAVAILABLE_FOR_LEGAL_REASONS: 451,
+  UNAVAILABLE_FOR_LEGAL_REASONS: 451
+} as const;
 
-
-  //--------------------------------
-  //
-  // SERVER ERROR
-  //
-  //--------------------------------
-
+export type ServerErrorStatusCodes = ObjectValues<typeof ServerErrorStatusCodes>;
+export const ServerErrorStatusCodes = {
   /**
    * The server encountered an unexpected condition that prevented it from fulfilling the request.
    * @doc https://tools.ietf.org/html/rfc7231#section-6.6.1
@@ -390,4 +322,12 @@ export const StatusCodes = {
    * @doc https://tools.ietf.org/html/rfc6585#section-6
    */
   NETWORK_AUTHENTICATION_REQUIRED: 511
+} as const;
+
+export type StatusCodes = ObjectValues<typeof StatusCodes>;
+export const StatusCodes = {
+  ...ServerErrorStatusCodes,
+  ...ClientErrorStatusCodes,
+  ...SuccessfulStatusCode,
+  ...InformationalStatusCodes
 } as const;

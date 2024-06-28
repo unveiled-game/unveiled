@@ -1,1 +1,8 @@
-export { Methods, StatusCodes } from "./const";
+export {
+  Methods,
+  StatusCodes,
+  InformationalStatusCodes,
+  SuccessfulStatusCode,
+  ClientErrorStatusCodes,
+  ServerErrorStatusCodes
+} from "./const";
