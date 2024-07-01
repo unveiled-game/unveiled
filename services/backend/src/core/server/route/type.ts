@@ -1,7 +1,7 @@
 import type { ALLOWED_METHODS, METHODS_WITHOUT_BODY } from "./const";
-import type { UnionToIntersection } from "#/utils/typing";
 import type { z, AnyZodObject, ZodNumber, ZodObject, ZodString } from "#/utils/zod";
 import type { MiddlewareHandler } from "hono";
+import type { UnionToIntersection } from "@packages/devx";
 
 
 type Methods = ALLOWED_METHODS;

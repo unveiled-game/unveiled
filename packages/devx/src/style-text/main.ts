@@ -1,4 +1,4 @@
-import type { Format } from "#/utils/style-text/type";
+import type { Format } from "./type";
 import { styleText as st } from "node:util";
 
 

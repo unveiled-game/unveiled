@@ -1,0 +1,27 @@
+{
+  "name": "@packages/devx",
+  "exports": "./src/index.ts",
+  "module": "src/index.ts",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "ts:check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@bluzzi/eslint-config": "^1.2.1",
+    "@types/bun": "latest",
+    "eslint": "^8.57.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "eslintConfig": {
+    "extends": "@bluzzi",
+    "rules": {
+      "camelcase": "off",
+      "max-len": "off"
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import type { ObjectValues } from "#/utils/object/typing";
+import type { ObjectValues } from "@packages/devx";
 
 
 export type Methods = ObjectValues<typeof Methods>;
