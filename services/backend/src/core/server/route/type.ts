@@ -1,10 +1,11 @@
-import type { ALLOWED_METHODS } from "./const";
+import type { ALLOWED_METHODS, METHODS_WITHOUT_BODY } from "./const";
 import type { UnionToIntersection } from "#/utils/typing";
 import type { z, AnyZodObject, ZodNumber, ZodObject, ZodString } from "#/utils/zod";
 import type { MiddlewareHandler } from "hono";
 
 
-type Methods = typeof ALLOWED_METHODS[number];
+type Methods = ALLOWED_METHODS;
+type MethodWithoutBody = METHODS_WITHOUT_BODY;
 
 type Param = ZodObject<{
   [k: string]: ZodString | ZodNumber;
@@ -12,6 +13,7 @@ type Param = ZodObject<{
 
 type MaybeZodObject = AnyZodObject | void;
 type MaybeParam = Param | void;
+
 
 type GetMiddlewareVariables<
   T extends MiddlewareHandler[]
@@ -54,11 +56,10 @@ type HandlerParameters<
   B extends MaybeZodObject,
   M extends MiddlewareHandler[]
 > =
-  T extends "GET" ? HanderCommonParameters<P, Q, M> :
+  T extends MethodWithoutBody ? HanderCommonParameters<P, Q, M> :
   HanderCommonParameters<P, Q, M> & {
     body: B extends AnyZodObject ? z.output<B> : null;
   };
-
 
 type RouteConfig<
   T extends Methods,
@@ -70,7 +71,7 @@ type RouteConfig<
   method: T;
   param?: P;
   query?: Q;
-  body?: B;
+  body?: T extends MethodWithoutBody ? void : B;
   middlewares?: M;
   handler: (request: HandlerParameters<T, P, Q, B, M>) => void;
 };
