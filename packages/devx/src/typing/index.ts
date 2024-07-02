@@ -1,1 +1,1 @@
-export type { MaybePromise, ObjectValues, UnionToIntersection } from "./type";
+export type { Maybe, MaybePromise, ObjectValues, UnionToIntersection } from "./type";

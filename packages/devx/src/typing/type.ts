@@ -1,3 +1,5 @@
+export type Maybe<T> = T | void;
+
 export type MaybePromise<T> = T | Promise<T>;
 
 export type ObjectValues<T> = T[keyof T];
