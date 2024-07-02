@@ -96,6 +96,51 @@ export const SuccessfulStatusCode = {
   MULTI_STATUS: 207
 } as const;
 
+export type RedirectionStatusCodes = ObjectValues<typeof RedirectionStatusCodes>;
+export const RedirectionStatusCodes = {
+  /**
+   * The request has more than one possible responses. User-agent or user should choose one of them. There is no standardized way to choose one of the responses.
+   * @doc https://tools.ietf.org/html/rfc7231#section-6.4.1
+   */
+  MULTIPLE_CHOICES: 300,
+
+  /**
+   * This response code means that URI of requested resource has been changed. Probably, new URI would be given in the response.
+   * @doc https://tools.ietf.org/html/rfc7231#section-6.4.2
+   */
+  MOVED_PERMANENTLY: 301,
+
+  /**
+   * This response code means that URI of requested resource has been changed temporarily. New changes in the URI might be made in the future. Therefore, this same URI should be used by the client in future requests.
+   * @doc https://tools.ietf.org/html/rfc7231#section-6.4.3
+   */
+  MOVED_TEMPORARILY: 302,
+
+  /**
+   * Server sent this response to directing client to get requested resource to another URI with an GET request.
+   * @doc https://tools.ietf.org/html/rfc7231#section-6.4.4
+   */
+  SEE_OTHER: 303,
+
+  /**
+   * This is used for caching purposes. It is telling to client that response has not been modified. So, client can continue to use same cached version of response.
+   * @doc https://tools.ietf.org/html/rfc7232#section-4.1
+   */
+  NOT_MODIFIED: 304,
+
+  /**
+   * Server sent this response to directing client to get requested resource to another URI with same method that used prior request. This has the same semantic than the 302 Found HTTP response code, with the exception that the user agent must not change the HTTP method used: if a POST was used in the first request, a POST must be used in the second request.
+   * @doc https://tools.ietf.org/html/rfc7231#section-6.4.7
+   */
+  TEMPORARY_REDIRECT: 307,
+
+  /**
+   * This means that the resource is now permanently located at another URI, specified by the Location: HTTP Response header. This has the same semantics as the 301 Moved Permanently HTTP response code, with the exception that the user agent must not change the HTTP method used: if a POST was used in the first request, a POST must be used in the second request.
+   * @doc https://tools.ietf.org/html/rfc7538#section-3
+   */
+  PERMANENT_REDIRECT: 308
+} as const;
+
 export type ClientErrorStatusCodes = ObjectValues<typeof ClientErrorStatusCodes>;
 export const ClientErrorStatusCodes = {
   /**
@@ -328,6 +373,7 @@ export type StatusCodes = ObjectValues<typeof StatusCodes>;
 export const StatusCodes = {
   ...ServerErrorStatusCodes,
   ...ClientErrorStatusCodes,
+  ...RedirectionStatusCodes,
   ...SuccessfulStatusCode,
   ...InformationalStatusCodes
 } as const;
