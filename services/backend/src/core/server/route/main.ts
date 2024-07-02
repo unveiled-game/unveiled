@@ -1,4 +1,4 @@
-import type { CreateRoute } from "./type";
+import type { CreateRouteConfig } from "./type";
 
 
-export const createRoute: CreateRoute = (route) => route;
+export const createRoute: CreateRouteConfig = (route) => route;
