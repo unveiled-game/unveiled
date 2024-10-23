@@ -1,7 +1,7 @@
 import { dayJS } from "#/utils/day-js";
 import { Levels } from "./const";
 import { format, transports } from "winston";
-import { st } from "#/utils/style-text";
+import { st } from "@packages/devx";
 
 
 export const transportList = {

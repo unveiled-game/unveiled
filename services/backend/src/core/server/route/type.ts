@@ -1,27 +1,27 @@
-import type { ALLOWED_METHODS, APIError, METHODS_WITHOUT_BODY } from "./const";
+import type { ALLOWED_METHODS, API_ERROR, ERROR_RESPONSES_CODES, METHODS_WITHOUT_BODY, SUCCESS_RESPONSES_CODES } from "./const";
 import type { z, AnyZodObject, ZodNumber, ZodObject, ZodString } from "#/utils/zod";
 import type { MiddlewareHandler } from "hono";
-import type { StatusCodes, ClientErrorStatusCodes, ServerErrorStatusCodes, InformationalStatusCodes, SuccessfulStatusCode, RedirectionStatusCodes } from "#/utils/http";
 import type { Maybe, UnionToIntersection } from "@packages/devx";
+import {} from "@hono/zod-openapi";
 
 
 type PathVariables = ZodObject<{
   [K: string]: ZodString | ZodNumber;
 }>;
 
-type SuccessResponses = Partial<Record<
-  Exclude<StatusCodes, ClientErrorStatusCodes | ServerErrorStatusCodes>,
+export type SuccessResponses = Partial<Record<
+  SUCCESS_RESPONSES_CODES,
   AnyZodObject
 >>;
 
-type ErrorResponses = Partial<Record<
-Exclude<StatusCodes, InformationalStatusCodes | SuccessfulStatusCode | RedirectionStatusCodes>,
-  Array<APIError>
+export type ErrorResponses = Partial<Record<
+  ERROR_RESPONSES_CODES,
+  Array<API_ERROR>
 >>;
 
 type GetMiddlewareEnvVar<
   TMiddlewares extends MiddlewareHandler[],
-  V extends "var" | "env"
+  V extends "var" = "var"
 > =
   TMiddlewares extends (infer U)[] ?
     (
@@ -39,7 +39,6 @@ type HanderCommonParameters<
   TErrorResponses extends ErrorResponses
 > = {
   variables: UnionToIntersection<GetMiddlewareEnvVar<TMiddlewares, "var">>;
-  env: UnionToIntersection<GetMiddlewareEnvVar<TMiddlewares, "env">>;
   pathVariables: TPathVariables extends PathVariables ? z.output<TPathVariables> : null;
   queries: TQueries extends AnyZodObject ? z.output<TQueries> : null;
   header: (name: string) => string | undefined;

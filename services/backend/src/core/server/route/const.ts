@@ -1,21 +1,34 @@
-import { Methods } from "#/utils/http";
+import { CLIENT_ERROR_STATUS_CODES, INFORMATIONAL_STATUS_CODES, METHODS, REDIRECTION_STATUS_CODES, SERVER_ERROR_STATUS_CODES, SUCCESSFUL_STATUS_CODE } from "#/utils/http";
 import type { ObjectValues } from "@packages/devx";
 
 
 export type ALLOWED_METHODS = typeof ALLOWED_METHODS[number];
 export const ALLOWED_METHODS = [
-  Methods.GET,
-  Methods.POST,
-  Methods.PATCH,
-  Methods.DELETE
-] as const satisfies Array<Methods>;
+  METHODS.GET,
+  METHODS.POST,
+  METHODS.PATCH,
+  METHODS.DELETE
+] as const satisfies Array<METHODS>;
 
 export type METHODS_WITHOUT_BODY = typeof METHODS_WITHOUT_BODY[number];
 export const METHODS_WITHOUT_BODY = [
-  Methods.GET,
-  Methods.DELETE
+  METHODS.GET,
+  METHODS.DELETE
 ] as const satisfies Array<ALLOWED_METHODS>;
 
-export type APIError = ObjectValues<typeof APIError>;
-export const APIError = {
+export type API_ERROR = ObjectValues<typeof API_ERROR>;
+export const API_ERROR = {
+} as const;
+
+export type SUCCESS_RESPONSES_CODES = ObjectValues<typeof SUCCESS_RESPONSES_CODES>
+export const SUCCESS_RESPONSES_CODES = {
+  ...INFORMATIONAL_STATUS_CODES,
+  ...SUCCESSFUL_STATUS_CODE,
+  ...REDIRECTION_STATUS_CODES
+} as const;
+
+export type ERROR_RESPONSES_CODES = ObjectValues<typeof ERROR_RESPONSES_CODES>
+export const ERROR_RESPONSES_CODES = {
+  ...CLIENT_ERROR_STATUS_CODES,
+  ...SERVER_ERROR_STATUS_CODES
 } as const;

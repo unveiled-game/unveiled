@@ -1,9 +1,9 @@
 export {
-  Methods,
-  StatusCodes,
-  InformationalStatusCodes,
-  SuccessfulStatusCode,
-  RedirectionStatusCodes,
-  ClientErrorStatusCodes,
-  ServerErrorStatusCodes
+  METHODS,
+  STATUS_CODES,
+  INFORMATIONAL_STATUS_CODES,
+  SUCCESSFUL_STATUS_CODE,
+  REDIRECTION_STATUS_CODES,
+  CLIENT_ERROR_STATUS_CODES,
+  SERVER_ERROR_STATUS_CODES
 } from "./const";

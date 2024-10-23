@@ -4,8 +4,8 @@ import { version, name } from "../package.json";
 import { env } from "#/core/env";
 import { Environment } from "#/core/env";
 import { logger } from "#/utils/logger";
-import { st } from "#/utils/style-text";
 import { serve } from "bun";
+import { st } from "@packages/devx";
 
 
 const app = new OpenAPIHono();
@@ -20,7 +20,6 @@ app.doc("/documentation/json", {
 });
 
 app.get("/documentation", swaggerUI({ url: "/documentation/json" }));
-
 
 const server = serve({
   development: env.ENVIRONMENT === Environment.DEV,

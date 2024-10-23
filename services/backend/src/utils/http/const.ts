@@ -1,8 +1,8 @@
 import type { ObjectValues } from "@packages/devx";
 
 
-export type Methods = ObjectValues<typeof Methods>;
-export const Methods = {
+export type METHODS = ObjectValues<typeof METHODS>;
+export const METHODS = {
   GET: "GET",
   HEAD: "HEAD",
   POST: "POST",
@@ -14,8 +14,8 @@ export const Methods = {
   PATCH: "PATCH"
 } as const;
 
-export type InformationalStatusCodes = ObjectValues<typeof InformationalStatusCodes>;
-export const InformationalStatusCodes = {
+export type INFORMATIONAL_STATUS_CODES = ObjectValues<typeof INFORMATIONAL_STATUS_CODES>;
+export const INFORMATIONAL_STATUS_CODES = {
   /**
    * This interim response indicates that everything so far is OK and that the client should continue with the request or ignore it if it is already finished.
    * @doc https://tools.ietf.org/html/rfc7231#section-6.2.1
@@ -41,8 +41,8 @@ export const InformationalStatusCodes = {
   EARLY_HINTS: 103
 } as const;
 
-export type SuccessfulStatusCode = ObjectValues<typeof SuccessfulStatusCode>;
-export const SuccessfulStatusCode = {
+export type SUCCESSFUL_STATUS_CODE = ObjectValues<typeof SUCCESSFUL_STATUS_CODE>;
+export const SUCCESSFUL_STATUS_CODE = {
   /**
    * The request has succeeded. The meaning of a success varies depending on the HTTP method:
    * GET: The resource has been fetched and is transmitted in the message body.
@@ -96,8 +96,8 @@ export const SuccessfulStatusCode = {
   MULTI_STATUS: 207
 } as const;
 
-export type RedirectionStatusCodes = ObjectValues<typeof RedirectionStatusCodes>;
-export const RedirectionStatusCodes = {
+export type REDIRECTION_STATUS_CODES = ObjectValues<typeof REDIRECTION_STATUS_CODES>;
+export const REDIRECTION_STATUS_CODES = {
   /**
    * The request has more than one possible responses. User-agent or user should choose one of them. There is no standardized way to choose one of the responses.
    * @doc https://tools.ietf.org/html/rfc7231#section-6.4.1
@@ -141,8 +141,8 @@ export const RedirectionStatusCodes = {
   PERMANENT_REDIRECT: 308
 } as const;
 
-export type ClientErrorStatusCodes = ObjectValues<typeof ClientErrorStatusCodes>;
-export const ClientErrorStatusCodes = {
+export type CLIENT_ERROR_STATUS_CODES = ObjectValues<typeof CLIENT_ERROR_STATUS_CODES>;
+export const CLIENT_ERROR_STATUS_CODES = {
   /**
    * This response means that server could not understand the request due to invalid syntax.
    * @doc https://tools.ietf.org/html/rfc7231#section-6.5.1
@@ -318,8 +318,8 @@ export const ClientErrorStatusCodes = {
   UNAVAILABLE_FOR_LEGAL_REASONS: 451
 } as const;
 
-export type ServerErrorStatusCodes = ObjectValues<typeof ServerErrorStatusCodes>;
-export const ServerErrorStatusCodes = {
+export type SERVER_ERROR_STATUS_CODES = ObjectValues<typeof SERVER_ERROR_STATUS_CODES>;
+export const SERVER_ERROR_STATUS_CODES = {
   /**
    * The server encountered an unexpected condition that prevented it from fulfilling the request.
    * @doc https://tools.ietf.org/html/rfc7231#section-6.6.1
@@ -369,11 +369,11 @@ export const ServerErrorStatusCodes = {
   NETWORK_AUTHENTICATION_REQUIRED: 511
 } as const;
 
-export type StatusCodes = ObjectValues<typeof StatusCodes>;
-export const StatusCodes = {
-  ...ServerErrorStatusCodes,
-  ...ClientErrorStatusCodes,
-  ...RedirectionStatusCodes,
-  ...SuccessfulStatusCode,
-  ...InformationalStatusCodes
+export type STATUS_CODES = ObjectValues<typeof STATUS_CODES>;
+export const STATUS_CODES = {
+  ...SERVER_ERROR_STATUS_CODES,
+  ...CLIENT_ERROR_STATUS_CODES,
+  ...REDIRECTION_STATUS_CODES,
+  ...SUCCESSFUL_STATUS_CODE,
+  ...INFORMATIONAL_STATUS_CODES
 } as const;

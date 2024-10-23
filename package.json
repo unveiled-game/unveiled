@@ -14,7 +14,7 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "bun run --filter='*' dev | tee /dev/null",
+    "dev": "bun run --filter='*' dev --no-clear-screen=false | tee /dev/null",
     "dev:backend": "bun run --filter='@services/backend' dev | tee /dev/null",
     "dev:frontend": "bun run --filter='@services/frontend' dev | tee /dev/null"
   }
